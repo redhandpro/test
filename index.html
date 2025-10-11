@@ -1,7 +1,184 @@
-<!-- From Uiverse.io by eslam-hany --> 
- <div class="book">
-    <p>Hello</p>
-    <div class="cover">
-        <p>Hover Me</p>
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>تبریک روز دختر</title>
+  <!-- فونت فارسی Vazirmatn از گوگل فونت -->
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
+  <meta name="description" content="صفحه تبریک روز دختر — طراحی زیبا و واکنش‌گرا">
+  <style>
+    :root{
+      --bg1: #fce4ec;
+      --bg2: #f3e5f5;
+      --accent: #ff4081;
+      --card: rgba(255,255,255,0.85);
+      --glass: rgba(255,255,255,0.12);
+      --shadow: 0 8px 30px rgba(23,0,46,0.12);
+      --radius: 18px;
+      --rtl-font: 'Vazirmatn', Tahoma, sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--rtl-font);
+      background: radial-gradient(1000px 600px at 10% 10%, #fff0f6 0%, transparent 20%),
+                  radial-gradient(800px 500px at 90% 90%, #f8eafc 0%, transparent 18%),
+                  linear-gradient(135deg,var(--bg1),var(--bg2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .container{
+      width:100%;
+      max-width:980px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.35));
+      border-radius:26px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(6px) saturate(120%);
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:22px;
+      align-items:center;
+    }
+
+    @media (max-width:880px){
+      .container{grid-template-columns:1fr; padding:20px}
+      .art{order:-1}
+    }
+
+    .content{
+      padding:18px 24px;
+    }
+    h1{
+      margin:0 0 8px 0;
+      font-size:34px;
+      color:#4a0d3a;
+      letter-spacing:0.6px;
+    }
+    p.lead{
+      margin:0 0 18px 0;
+      color:#5b2b4b;
+      line-height:1.6;
+      font-size:16px;
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:14px;
+      padding:16px;
+      box-shadow:0 4px 20px rgba(17,10,20,0.06);
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+
+    .avatar{
+      width:74px;height:74px;border-radius:12px;flex-shrink:0;
+      background:linear-gradient(135deg,#ffd1e8,#ffd7f2);
+      display:grid;place-items:center;font-weight:700;color:#6b0b4a;font-size:26px;
+      box-shadow:inset 0 -8px 18px rgba(255,255,255,0.5);
+    }
+
+    .meta{
+      flex:1;
+    }
+    .meta small{display:block;color:#7a516b}
+
+    .btn-row{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      display:inline-block;padding:12px 18px;border-radius:12px;text-decoration:none;font-weight:600;
+      box-shadow:0 6px 18px rgba(80,0,60,0.08);
+      transition:transform .16s ease, box-shadow .16s ease;
+    }
+    .btn-main{background:linear-gradient(90deg,var(--accent),#ff80ab);color:white}
+    .btn-secondary{background:transparent;border:1px solid rgba(90,20,60,0.08);color:#5b2b4b}
+    .btn:active{transform:translateY(1px)}
+
+    /* Artwork */
+    .art{
+      padding:12px;
+      display:flex;align-items:center;justify-content:center;position:relative;
+    }
+    .illustration{
+      width:100%;max-width:380px;border-radius:18px;padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.06));
+      box-shadow:0 12px 40px rgba(23,0,46,0.08);
+      display:grid;place-items:center;position:relative;overflow:hidden;
+    }
+    .flowers{position:absolute;inset:auto 0 0 -30px;opacity:0.95;pointer-events:none}
+
+    .footer{margin-top:18px;color:#6f4660;font-size:13px}
+
+    /* decorative hearts */
+    .heart{position:absolute;width:96px;height:96px;border-radius:20px;background:linear-gradient(135deg,#fff7fb,#fff0f5);transform:rotate(20deg);right:12px;top:8px;opacity:0.9}
+    .heart:before,.heart:after{content:'';position:absolute;width:60px;height:60px;background:linear-gradient(135deg,#fff0f6,#ffd8ee);border-radius:50%}
+    .heart:before{left:18px;top:-28px}
+    .heart:after{left:-4px;top:4px}
+
+    /* small note */
+    .note{font-size:14px;color:#7b516a;background:linear-gradient(90deg, rgba(255,255,255,0.45), rgba(255,255,255,0.2));padding:10px;border-radius:10px;margin-top:12px}
+
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <div class="content">
+      <h1>روز دختر مبارک 🎀</h1>
+      <p class="lead">به مناسبت روز دختر، این پیام را برای یک دختر عزیز آماده کردم — پر از آرزوهای خوب، امید و لبخند. می‌تونی این صفحه را به اشتراک بگذاری یا لینک پایین را برای او بفرستی.</p>
+
+      <div class="card" aria-label="کارت تبریک">
+        <div class="avatar">دخ</div>
+        <div class="meta">
+          <strong>برای یک دختر ویژه</strong>
+          <small>آرزو می‌کنم همیشه شاد، سالم و پرانرژی باشی.</small>
+          <div class="btn-row">
+            <!-- تغییر href به لینک دلخواه شما -->
+            <a class="btn btn-main" href="https://example.com" target="_blank" rel="noopener">بازدید از لینک</a>
+            <a class="btn btn-secondary" href="#share" onclick="navigator.clipboard?.writeText(location.href).then(()=>alert('آدرس کپی شد')) || alert('مرورگر شما از کلیپ‌بورد پشتیبانی نمی‌کند')">کپی آدرس صفحه</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="note">نکته: برای تغییر متن یا لینک، فایل را با یک ویرایشگر متن باز کنید و مقدار <code>href</code> را جایگزین کنید.</div>
+
+      <div class="footer">با عشق — <strong>تبریک‌گوی شما</strong></div>
     </div>
-   </div>
+
+    <div class="art" aria-hidden="true">
+      <div class="illustration">
+        <div class="heart" style="right:34px;top:10px;transform:rotate(8deg) scale(0.9)"></div>
+        <svg width="260" height="220" viewBox="0 0 260 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="#ffe0f0"/>
+              <stop offset="1" stop-color="#ffd1e8"/>
+            </linearGradient>
+          </defs>
+          <rect x="10" y="20" rx="16" width="240" height="180" fill="url(#g1)" stroke="rgba(255,255,255,0.6)"/>
+          <g transform="translate(40,40)">
+            <circle cx="60" cy="30" r="24" fill="#fff" opacity="0.9"/>
+            <path d="M18 120 Q60 160 102 120" stroke="#ff8ab3" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <g transform="translate(10,10)" fill="#fff">
+              <rect x="10" y="12" width="120" height="56" rx="8"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // اگر کاربر خواست بک‌اند یا لینک را عوض کند
+    // جاوااسکریپت ساده برای تعاملات کوچک
+    document.querySelectorAll('.btn-main').forEach(btn=>{
+      btn.addEventListener('click', ()=>console.log('لینک اصلی باز شد'))
+    })
+  </script>
+</body>
+</html>
