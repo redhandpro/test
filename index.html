@@ -1,160 +1,196 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🌸 روز دختر مبارک 🌸</title>
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<div class="cosmos-background">
+	<div class="stars-container"></div>
+</div>
 
-    body {
-      font-family: "Vazirmatn", sans-serif;
-      height: 100vh;
-      background: linear-gradient(135deg, #ffb6f0, #ffe5f6, #ffd6f5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      color: #5b005b;
-    }
+<div class="container-fluid h-100 d-flex flex-column">
+	<header class="py-3 text-center">
+		<h1 class="title">Interdimensional Memory Shards</h1>
+	</header>
 
-    /* بکگراند انیمیشنی موجی */
-    .wave {
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      top: -50%;
-      left: -50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), transparent 50%),
-                  radial-gradient(circle at 70% 70%, rgba(255,200,255,0.6), transparent 50%);
-      animation: moveBg 10s infinite alternate ease-in-out;
-      z-index: 0;
-      filter: blur(40px);
-    }
+	<main class="flex-grow-1 d-flex align-items-center justify-content-center position-relative">
+		<div class="carousel-container">
+			<div class="carousel" id="memory-carousel">
+				<!-- Memory Card 1 -->
+				<div class="memory-card" data-memory-id="1">
+					<div class="card-inner">
+						<div class="card-front">
+							<div class="card-content">
+								<div class="memory-date">DIMENSION: A-137</div>
+								<h3>First Contact</h3>
+								<div class="memory-image">
+									<i class="fa-solid fa-rocket fa-3x"></i>
+									<div class="glitch-effect"></div>
+								</div>
+								<p class="memory-preview">I saw the portal open before me, pulsing with energy...</p>
+								<div class="card-glow"></div>
+							</div>
+						</div>
+						<div class="card-back">
+							<div class="card-content">
+								<h3>First Contact</h3>
+								<p>I saw the portal open before me, pulsing with energy unknown to my dimension. The coordinates were clear: A-137. As I stepped through, my molecules scattered across realities. This was the first jump. I wasn't supposed to remember it, but somehow I do.</p>
+								<div class="memory-coordinates">
+									<span><i class="fa-solid fa-location-dot"></i> 37.7749° N, 122.4194° W</span>
+									<span class="time-stamp"><i class="fa-regular fa-clock"></i> 03:27:16</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-    @keyframes moveBg {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(10%, 10%) scale(1.1); }
-    }
+				<!-- Memory Card 2 -->
+				<div class="memory-card" data-memory-id="2">
+					<div class="card-inner">
+						<div class="card-front">
+							<div class="card-content">
+								<div class="memory-date">DIMENSION: C-982</div>
+								<h3>The Watchers</h3>
+								<div class="memory-image">
+									<i class="fa-solid fa-eye fa-3x"></i>
+									<div class="glitch-effect"></div>
+								</div>
+								<p class="memory-preview">They observed from the shadows, eyes glowing...</p>
+								<div class="card-glow"></div>
+							</div>
+						</div>
+						<div class="card-back">
+							<div class="card-content">
+								<h3>The Watchers</h3>
+								<p>They observed from the shadows, eyes glowing with ancient knowledge. The Watchers have been tracking my jumps. They say I'm destabilizing the multiverse with each crossing. My presence causes ripples they can't control. I'm becoming a threat.</p>
+								<div class="memory-coordinates">
+									<span><i class="fa-solid fa-location-dot"></i> 51.5074° N, 0.1278° W</span>
+									<span class="time-stamp"><i class="fa-regular fa-clock"></i> 17:42:03</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-    /* کارت اصلی */
-    .card {
-      position: relative;
-      z-index: 2;
-      background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(10px);
-      border-radius: 24px;
-      padding: 40px 50px;
-      box-shadow: 0 8px 40px rgba(255, 0, 150, 0.2);
-      text-align: center;
-      width: 90%;
-      max-width: 500px;
-      overflow: hidden;
-    }
+				<!-- Memory Card 3 -->
+				<div class="memory-card" data-memory-id="3">
+					<div class="card-inner">
+						<div class="card-front">
+							<div class="card-content">
+								<div class="memory-date">DIMENSION: F-451</div>
+								<h3>The Library</h3>
+								<div class="memory-image">
+									<i class="fa-solid fa-book fa-3x"></i>
+									<div class="glitch-effect"></div>
+								</div>
+								<p class="memory-preview">Endless shelves containing every possible reality...</p>
+								<div class="card-glow"></div>
+							</div>
+						</div>
+						<div class="card-back">
+							<div class="card-content">
+								<h3>The Library</h3>
+								<p>Endless shelves containing every possible reality. I found my own book there—pages still being written as I moved. The Librarian told me I was never supposed to leave my original dimension. My story was already complete. Now I'm writing outside the margins.</p>
+								<div class="memory-coordinates">
+									<span><i class="fa-solid fa-location-dot"></i> 40.7128° N, 74.0060° W</span>
+									<span class="time-stamp"><i class="fa-regular fa-clock"></i> 09:13:27</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-    h1 {
-      font-size: 2.4rem;
-      margin-bottom: 10px;
-      background: linear-gradient(90deg, #ff0080, #b000b0);
-      -webkit-background-clip: text;
-      color: transparent;
-      animation: glow 3s infinite alternate;
-    }
+				<!-- Memory Card 4 -->
+				<div class="memory-card" data-memory-id="4">
+					<div class="card-inner">
+						<div class="card-front">
+							<div class="card-content">
+								<div class="memory-date">DIMENSION: X-000</div>
+								<h3>The Void</h3>
+								<div class="memory-image">
+									<i class="fa-solid fa-atom fa-3x"></i>
+									<div class="glitch-effect"></div>
+								</div>
+								<p class="memory-preview">Nothing exists here, yet I feel everything...</p>
+								<div class="card-glow"></div>
+							</div>
+						</div>
+						<div class="card-back">
+							<div class="card-content">
+								<h3>The Void</h3>
+								<p>Nothing exists here, yet I feel everything. The Void is the space between dimensions, a quantum foam of possibilities. I stayed too long and began to dissolve. Parts of me are still there, echoing. I'm not whole anymore. Can you feel the gaps in my memories?</p>
+								<div class="memory-coordinates">
+									<span><i class="fa-solid fa-location-dot"></i> 0.0000° N, 0.0000° E</span>
+									<span class="time-stamp"><i class="fa-regular fa-clock"></i> --:--:--</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #ffb6f0; }
-      to { text-shadow: 0 0 20px #ff69b4; }
-    }
+				<!-- Memory Card 5 -->
+				<div class="memory-card" data-memory-id="5">
+					<div class="card-inner">
+						<div class="card-front">
+							<div class="card-content">
+								<div class="memory-date">DIMENSION: H-221</div>
+								<h3>The Mirror</h3>
+								<div class="memory-image">
+									<i class="fa-solid fa-clone fa-3x"></i>
+									<div class="glitch-effect"></div>
+								</div>
+								<p class="memory-preview">I saw myself, but not as I am now...</p>
+								<div class="card-glow"></div>
+							</div>
+						</div>
+						<div class="card-back">
+							<div class="card-content">
+								<h3>The Mirror</h3>
+								<p>I saw myself, but not as I am now. The mirror showed all my possible selves across dimensions. Some were happy, some were monsters. All were me. The reflection spoke: "You're fracturing reality by existing in multiple places. You need to choose one timeline and stay."</p>
+								<div class="memory-coordinates">
+									<span><i class="fa-solid fa-location-dot"></i> 35.6762° N, 139.6503° E</span>
+									<span class="time-stamp"><i class="fa-regular fa-clock"></i> 22:07:59</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-    .typewriter {
-      display: inline-block;
-      border-left: 3px solid #ff0099;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 0;
-      animation: typing 4s steps(40, end) forwards, blink 1s infinite;
-      font-size: 1.1rem;
-      color: #6b006b;
-    }
+				<!-- Memory Card 6 -->
+				<div class="memory-card" data-memory-id="6">
+					<div class="card-inner">
+						<div class="card-front">
+							<div class="card-content">
+								<div class="memory-date">DIMENSION: ?-???</div>
+								<h3>The Return</h3>
+								<div class="memory-image">
+									<i class="fa-solid fa-home fa-3x"></i>
+									<div class="glitch-effect"></div>
+								</div>
+								<p class="memory-preview">I'm trying to find my way home, but which one is real?</p>
+								<div class="card-glow"></div>
+							</div>
+						</div>
+						<div class="card-back">
+							<div class="card-content">
+								<h3>The Return</h3>
+								<p>I'm trying to find my way home, but which one is real? Every dimension feels familiar yet wrong. The boundaries are thinning. Sometimes I see through the eyes of my other selves. I'm losing track of which memories belong to which version of me. Are you helping me remember, or are you causing me to forget?</p>
+								<div class="memory-coordinates">
+									<span><i class="fa-solid fa-location-dot"></i> ??.????° N, ??.????° W</span>
+									<span class="time-stamp"><i class="fa-regular fa-clock"></i> NOW</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
+		<div class="carousel-controls">
+			<button id="prev-btn" class="control-btn">
+				<i class="fa-solid fa-chevron-left"></i>
+			</button>
+			<button id="next-btn" class="control-btn">
+				<i class="fa-solid fa-chevron-right"></i>
+			</button>
+		</div>
+	</main>
 
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
-
-    p {
-      font-size: 1rem;
-      margin: 25px 0 30px;
-      line-height: 1.8;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 28px;
-      border-radius: 40px;
-      background: linear-gradient(90deg, #ff00a6, #ff70c6);
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      box-shadow: 0 8px 25px rgba(255, 0, 130, 0.4);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 12px 35px rgba(255, 0, 130, 0.6);
-    }
-
-    /* قلب‌های کوچک شناور */
-    .heart {
-      position: absolute;
-      color: #ff70b8;
-      font-size: 18px;
-      animation: float 6s linear infinite;
-      opacity: 0.8;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0) scale(1); opacity: 1; }
-      100% { transform: translateY(-800px) scale(0.5); opacity: 0; }
-    }
-  </style>
-</head>
-<body>
-  <div class="wave"></div>
-
-  <div class="card">
-    <h1>روز دختر مبارک 💖</h1>
-    <div class="typewriter">دختر یعنی لبخندِ زندگی 🌸</div>
-    <p>
-      به مناسبت روز دختر، آرزو می‌کنم دنیاتون پر از عشق، امید و درخشش باشه.  
-      چون شما زیباترین لبخند خدا هستید 💫
-    </p>
-  
-  </div>
-
-  <script>
-    // تولید قلب‌های متحرک تصادفی
-    const heartCount = 25;
-    for (let i = 0; i < heartCount; i++) {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerHTML = "💖";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = 4 + Math.random() * 4 + "s";
-      heart.style.animationDelay = Math.random() * 5 + "s";
-      heart.style.fontSize = 14 + Math.random() * 20 + "px";
-      document.body.appendChild(heart);
-    }
-  </script>
-</body>
-</html>
+	<footer class="py-3 text-center">
+		<p class="instructions">Click cards to reveal memories • Use arrow keys to navigate</p>
+	</footer>
+</div>
