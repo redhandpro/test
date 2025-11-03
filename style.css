@@ -413,4 +413,70 @@ main {
     justify-content: center; /* وسط افقی */
     padding-bottom: 50px;   /* فاصله از پایین - قابل تغییر */
 }
+/* تنظیمات پایه برای جلوگیری از اسکرول افقی */
+* {
+    box-sizing: border-box;
+}
+body {
+    overflow-x: hidden;
+}
+
+/* موبایل (صفحه های کوچک) */
+@media (max-width: 600px) {
+
+    .carousel-container {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .memory-card {
+        width: 90vw;  /* کارت تقریبا تمام عرض */
+        height: 70vh; /* ارتفاع بقیه صفحه */
+    }
+
+    .card-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .memory-preview {
+        font-size: 0.9rem;
+    }
+
+    .memory-date {
+        font-size: 0.8rem;
+    }
+
+    .carousel-controls button {
+        font-size: 20px;
+        width: 40px;
+        height: 40px;
+    }
+
+    main {
+        padding-bottom: 70px; /* کمی بیشتر برای موبایل */
+    }
+}
+
+/* تبلت */
+@media (min-width: 601px) and (max-width: 1024px) {
+
+    .memory-card {
+        width: 70vw;
+        height: 60vh;
+    }
+
+    main {
+        padding-bottom: 60px;
+    }
+}
+
+/* مانیتورهای بزرگ */
+@media (min-width: 1025px) {
+
+    .memory-card {
+        width: 380px;
+        height: 500px;
+    }
+}
+
 
