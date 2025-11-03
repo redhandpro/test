@@ -395,3 +395,22 @@ footer {
 		height: 350px;
 	}
 }
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.container-fluid {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;   /* قرار گرفتن پایین */
+    justify-content: center; /* وسط افقی */
+    padding-bottom: 50px;   /* فاصله از پایین - قابل تغییر */
+}
+
