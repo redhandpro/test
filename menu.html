@@ -1,93 +1,181 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منوی کافه IIIZ</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منوی کافه IIIZ</title>
 
-    <!-- فونت و آیکون -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 
-    <!-- فایل استایل اصلی -->
-    <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      color: white;
+      font-family: "Chakra Petch", sans-serif;
+      background-color: #050510;
+      overflow-x: hidden;
+    }
 
-    <style>
-        .menu-page {
-            text-align: center;
-            padding-top: 120px;
-            color: white;
-        }
+    .menu-page {
+      text-align: center;
+      padding: 80px 10px;
+    }
 
-        .menu-title {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, #9d00ff, #00e5ff);
-            -webkit-background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 15px rgba(157, 0, 255, .5);
-        }
+    .menu-title {
+      font-size: 2.3rem;
+      background: linear-gradient(90deg, #9d00ff, #00e5ff);
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 15px rgba(157, 0, 255, .5);
+      margin-bottom: 40px;
+    }
 
-        .menu-box {
-            width: 90%;
-            max-width: 450px;
-            margin: auto;
-            background: rgba(20,20,40,0.6);
-            border: 1px solid rgba(157, 0, 255, 0.3);
-            border-radius: 15px;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-        }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      width: 90%;
+      max-width: 900px;
+      margin: auto;
+    }
 
-        .menu-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-            font-size: 1.1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
+    .menu-card {
+      background: rgba(25, 25, 50, 0.6);
+      border: 1px solid rgba(157, 0, 255, 0.4);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform .4s ease, box-shadow .4s ease;
+      backdrop-filter: blur(10px);
+    }
 
-        .menu-item:last-child {
-            border-bottom: none;
-        }
+    .menu-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 25px rgba(157, 0, 255, .6);
+    }
 
-        .back-btn {
-            margin-top: 25px;
-            display: inline-block;
-            padding: 12px 25px;
-            background: linear-gradient(45deg, #9d00ff, #00e5ff);
-            border-radius: 8px;
-            text-decoration: none;
-            color: white;
-            font-family: "Orbitron";
-            transition: .3s;
-        }
+    .menu-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
 
-        .back-btn:hover {
-            transform: scale(1.1);
-        }
-    </style>
+    .menu-info {
+      padding: 15px;
+    }
+
+    .menu-info h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+
+    .menu-info p {
+      font-size: .95rem;
+      color: #b8b8ff;
+      margin-bottom: 8px;
+    }
+
+    .menu-price {
+      font-family: "Orbitron", sans-serif;
+      color: #00e5ff;
+      font-weight: bold;
+    }
+
+    .back-btn {
+      margin-top: 35px;
+      display: inline-block;
+      padding: 12px 25px;
+      background: linear-gradient(45deg, #9d00ff, #00e5ff);
+      border-radius: 8px;
+      text-decoration: none;
+      color: white;
+      font-family: "Orbitron";
+      transition: .3s;
+    }
+
+    .back-btn:hover {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 600px) {
+      .menu-title {
+        font-size: 1.8rem;
+      }
+
+      .menu-card img {
+        height: 150px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-
-<div class="cosmos-background">
+  <div class="cosmos-background">
     <div class="stars-container"></div>
-</div>
+  </div>
 
-<div class="menu-page">
-    <h1 class="menu-title">منوی کافه IIIZ ☕🚀</h1>
+  <div class="menu-page">
+    <h1 class="menu-title">☕ منوی کافه IIIZ 🚀</h1>
 
-    <div class="menu-box">
-        <div class="menu-item"><span>لاته</span> <span>65,000 تومان</span></div>
-        <div class="menu-item"><span>کاپوچینو</span> <span>60,000 تومان</span></div>
-        <div class="menu-item"><span>آیس آمریکانو</span> <span>55,000 تومان</span></div>
-        <div class="menu-item"><span>موکا</span> <span>70,000 تومان</span></div>
-        <div class="menu-item"><span>چای ماسالا</span> <span>58,000 تومان</span></div>
-        <div class="menu-item"><span>شیک کاراملی</span> <span>75,000 تومان</span></div>
+    <div class="menu-grid">
+
+      <div class="menu-card">
+        <img src="images/latte.jpg" alt="لاته">
+        <div class="menu-info">
+          <h3>لاته</h3>
+          <p>اسپرسو با شیر بخار داده و کف سبک ☁️</p>
+          <div class="menu-price">65,000 تومان</div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="images/cappuccino.jpg" alt="کاپوچینو">
+        <div class="menu-info">
+          <h3>کاپوچینو</h3>
+          <p>ترکیب شیر و اسپرسو با فوم غلیظ ☕</p>
+          <div class="menu-price">60,000 تومان</div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="images/americano.jpg" alt="آیس آمریکانو">
+        <div class="menu-info">
+          <h3>آیس آمریکانو</h3>
+          <p>اسپرسو سرد با یخ و طعمی تلخ و خاص ❄️</p>
+          <div class="menu-price">55,000 تومان</div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="images/mocha.jpg" alt="موکا">
+        <div class="menu-info">
+          <h3>موکا</h3>
+          <p>قهوه و شکلات در یک ترکیب جادویی 🍫</p>
+          <div class="menu-price">70,000 تومان</div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="images/masala.jpg" alt="چای ماسالا">
+        <div class="menu-info">
+          <h3>چای ماسالا</h3>
+          <p>طعم ادویه‌ای هند در فنجان شما 🌿</p>
+          <div class="menu-price">58,000 تومان</div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="images/caramelshake.jpg" alt="شیک کاراملی">
+        <div class="menu-info">
+          <h3>شیک کاراملی</h3>
+          <p>کارامل شیرین و شیر خنک 🍯</p>
+          <div class="menu-price">75,000 تومان</div>
+        </div>
+      </div>
+
     </div>
 
     <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-right"></i> بازگشت</a>
-</div>
-
+  </div>
 </body>
 </html>
