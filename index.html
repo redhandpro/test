@@ -3,161 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>منوی کافه IIIZ</title>
+  <title>Coffee IIIZ</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="menu.css">
 </head>
 <body>
+
+  <!-- Cosmic Background -->
   <div class="cosmos-background">
     <div class="stars-container"></div>
   </div>
 
-  <div class="menu-page">
-    <h1 class="menu-title">☕ منوی کافه IIIZ 🚀</h1>
-
-    <div class="menu-grid">
-
-      <!-- نوشیدنی‌ها -->
-      <div class="menu-card">
-        <img src="images/latte.jpg" alt="لاته">
-        <div class="menu-info">
-          <h3>لاته</h3>
-          <p>اسپرسو با شیر بخار داده و کف سبک</p>
-          <div class="menu-price">85,000 تومان</div>
-        </div>
+  <!-- Centered Button -->
+  <div class="wrapper">
+    <button type="button" class="btn">
+      <strong>HELLO IIIZ</strong>
+      <div id="container-stars">
+        <div id="stars"></div>
       </div>
-
-      <div class="menu-card">
-        <img src="images/cappuccino.jpg" alt="کاپوچینو">
-        <div class="menu-info">
-          <h3>کاپوچینو</h3>
-          <p>ترکیب شیر و اسپرسو با فوم غلیظ</p>
-          <div class="menu-price">80,000 تومان</div>
-        </div>
+      <div id="glow">
+        <div class="circle"></div>
+        <div class="circle"></div>
       </div>
+    </button>
+  </div>
 
-      <div class="menu-card">
-        <img src="images/americano.jpg" alt="آیس آمریکانو">
-        <div class="menu-info">
-          <h3>آیس آمریکانو</h3>
-          <p>اسپرسو سرد با یخ و طعمی تلخ و خاص</p>
-          <div class="menu-price">75,000 تومان</div>
+  <!-- Header -->
+  <header class="py-3 text-center">
+    <h1 class="title">WELCOME TO COFFE IIIZ</h1>
+  </header>
+
+  <!-- Carousel Section -->
+  <main class="flex-grow-1 d-flex align-items-center justify-content-center position-relative">
+    <div class="carousel-container">
+      <div class="carousel" id="memory-carousel">
+        <!-- Memory Card 1 -->
+        <div class="memory-card" data-memory-id="1">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-content">
+                <div class="memory-date">IIZ</div>
+                <h3>ارتباط با ما</h3>
+                <div class="memory-image">
+                  <i class="fa-solid fa-rocket fa-3x"></i>
+                  <div class="glitch-effect"></div>
+                </div>
+                <p class="memory-preview">در کنار شما در لحظه های خوش شما ...</p>
+                <div class="card-glow"></div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="card-content">
+                <h3>آدرس ما</h3>
+                <p>خوزستان بهبهان پار پردیس بعد از بستنی پاپا به سمت پل</p>
+                <div class="memory-coordinates">
+                  <span><i class="fa-solid fa-location-dot"></i> 37.7749° N, 122.4194° W</span>
+                  <span class="time-stamp"><i class="fa-regular fa-clock"></i> 03:27:16</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <!-- Add more memory cards as needed -->
       </div>
-
-      <div class="menu-card">
-        <img src="images/mocha.jpg" alt="موکا">
-        <div class="menu-info">
-          <h3>موکا</h3>
-          <p>قهوه و شکلات در یک ترکیب جادویی</p>
-          <div class="menu-price">90,000 تومان</div>
-        </div>
-      </div>
-
-      <div class="menu-card">
-        <img src="images/masala.jpg" alt="چای ماسالا">
-        <div class="menu-info">
-          <h3>چای ماسالا</h3>
-          <p>طعم ادویه‌ای هند در فنجان شما</p>
-          <div class="menu-price">70,000 تومان</div>
-        </div>
-      </div>
-
-      <div class="menu-card">
-        <img src="images/caramelshake.jpg" alt="شیک کاراملی">
-        <div class="menu-info">
-          <h3>شیک کاراملی</h3>
-          <p>کارامل شیرین و شیر خنک</p>
-          <div class="menu-price">95,000 تومان</div>
-        </div>
-      </div>
-
-      <!-- دسرها -->
-      <div class="menu-card">
-        <img src="images/cheesecake.jpg" alt="چیزکیک">
-        <div class="menu-info">
-          <h3>چیزکیک</h3>
-          <p>دسر خوشمزه با کرم و بیسکوییت</p>
-          <div class="menu-price">70,000 تومان</div>
-        </div>
-      </div>
-
-      <div class="menu-card">
-        <img src="images/brownie.jpg" alt="براونی">
-        <div class="menu-info">
-          <h3>براونی</h3>
-          <p>شکلاتی و نرم با طعم عالی</p>
-          <div class="menu-price">65,000 تومان</div>
-        </div>
-      </div>
-
-      <div class="menu-card">
-        <img src="images/croissant.jpg" alt="کروسان">
-        <div class="menu-info">
-          <h3>کروسان</h3>
-          <p>کره‌ای و ترد، مناسب صبحانه</p>
-          <div class="menu-price">55,000 تومان</div>
-        </div>
-      </div>
-
-      <!-- میان‌وعده‌ها -->
-      <div class="menu-card">
-        <img src="images/chicken_sandwich.jpg" alt="ساندویچ مرغ">
-        <div class="menu-info">
-          <h3>ساندویچ مرغ</h3>
-          <p>مرغ گریل شده با نان تازه و سبزیجات</p>
-          <div class="menu-price">85,000 تومان</div>
-        </div>
-      </div>
-
-      <div class="menu-card">
-        <img src="images/panini.jpg" alt="پنینی">
-        <div class="menu-info">
-          <h3>پنینی</h3>
-          <p>ساندویچ گرم و سبک با پنیر ذوب شده</p>
-          <div class="menu-price">80,000 تومان</div>
-        </div>
-      </div>
-
-      <div class="menu-card">
-        <img src="images/fries.jpg" alt="سیب‌زمینی مخصوص">
-        <div class="menu-info">
-          <h3>سیب‌زمینی مخصوص</h3>
-          <p>ترد و خوشمزه با چاشنی ویژه</p>
-          <div class="menu-price">50,000 تومان</div>
-        </div>
-      </div>
-
-      <div class="menu-card">
-        <img src="images/pizza_slice.jpg" alt="پیتزا اسلایس">
-        <div class="menu-info">
-          <h3>پیتزا اسلایس</h3>
-          <p>تکه‌های پیتزا با پنیر و سس تازه</p>
-          <div class="menu-price">75,000 تومان</div>
-        </div>
-      </div>
-
-      <div class="menu-card">
-        <img src="images/salad.jpg" alt="سالاد ویژه">
-        <div class="menu-info">
-          <h3>سالاد ویژه</h3>
-          <p>سبزیجات تازه با سس مخصوص</p>
-          <div class="menu-price">65,000 تومان</div>
-        </div>
-      </div>
-
-      <div class="menu-card">
-        <img src="images/smoothie.jpg" alt="اسموتی میوه‌ای">
-        <div class="menu-info">
-          <h3>اسموتی میوه‌ای</h3>
-          <p>میوه تازه و شیر یا ماست</p>
-          <div class="menu-price">70,000 تومان</div>
-        </div>
-      </div>
-
     </div>
 
-    <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-right"></i> بازگشت به صفحه اصلی</a>
-  </div>
+    <!-- Carousel Controls -->
+    <div class="carousel-controls">
+      <button id="prev-btn" class="control-btn">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button id="next-btn" class="control-btn">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-3 text-center">
+    <p class="instructions">بهترین در بهبهان</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
