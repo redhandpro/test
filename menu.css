@@ -118,6 +118,13 @@ body, html {
   background: #00e5ff;
   color: #050510;
 }
+.menu-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
 
 @media (max-width: 600px) {
   .menu-card img { height: 150px; }
