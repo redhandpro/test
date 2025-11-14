@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پنل مدیریت</title>
+
+  <style>
+    body { 
+      background: #111; 
+      color: #fff; 
+      font-family: sans-serif; 
+      padding: 20px; 
+    }
+    .box {
+      background: #222;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    input {
+      width: 90%;
+      padding: 8px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: none;
+    }
+    button {
+      padding: 10px 15px;
+      background: #ff9900;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+    .item {
+      background: #333;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>پنل مدیریت منو</h2>
+
+  <!-- افزودن آیتم -->
+  <div class="box">
+    <h3>افزودن آیتم جدید</h3>
+    <input id="newName" placeholder="نام آیتم">
+    <input id="newPrice" placeholder="قیمت">
+    <button onclick="addItem()">افزودن</button>
+  </div>
+
+  <!-- لیست آیتم‌ها -->
+  <h3>آیتم‌های منو</h3>
+  <div id="menuList"></div>
+
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { 
+      getFirestore, collection, addDoc, getDocs, deleteDoc, updateDoc, doc 
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    // ⛔ Firebase Config خودت را اینجا بگذار
+    const firebaseConfig = {
+      apiKey: "AIzaSyDbDtXhQBxUphCytdWx8cRETYjd4a3bcR4",
+      authDomain: "cafe-iiz.firebaseapp.com",
+      projectId: "cafe-iiz",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const menuRef = collection(db, "menu");
+
+    async function loadMenu() {
+      const list = document.getElementById("menuList");
+      list.innerHTML = "";
+      const data = await getDocs(menuRef);
+      data.forEach(item => {
+        const row = document.createElement("div");
+        row.className = "item";
+        row.innerHTML = `
+          <p><b>${item.data().name}</b> — ${item.data().price} تومان</p>
+          <input id="p${item.id}" placeholder="قیمت جدید">
+          <button onclick="updatePrice('${item.id}')">ویرایش</button>
+          <button onclick="removeItem('${item.id}')">حذف</button>
+        `;
+        list.appendChild(row);
+      });
+    }
+
+    window.addItem = async function () {
+      const name = newName.value;
+      const price = newPrice.value;
+      await addDoc(menuRef, { name, price });
+      loadMenu();
+    };
+
+    window.updatePrice = async function (id) {
+      const newPrice = document.getElementById("p" + id).value;
+      const ref = doc(db, "menu", id);
+      await updateDoc(ref, { price: newPrice });
+      loadMenu();
+    };
+
+    window.removeItem = async function (id) {
+      const ref = doc(db, "menu", id);
+      await deleteDoc(ref);
+      loadMenu();
+    };
+
+    loadMenu();
+  </script>
+
+</body>
+</html>
