@@ -1,20 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-  <meta charset="UTF-8">
-  <title>مدیریت منو - IIIZ</title>
+  <meta charset="UTF-8" />
+  <title>پنل مدیریت - Coffee IIIZ</title>
+  <link rel="stylesheet" href="style.css" />
   <script type="module" src="firebase-config.js"></script>
   <script type="module" src="admin.js"></script>
 </head>
-<body>
+<body dir="rtl">
   <h2>ورود مدیر</h2>
   <input type="email" id="email" placeholder="ایمیل مدیر">
   <input type="password" id="password" placeholder="رمز عبور">
   <button id="loginBtn">ورود</button>
 
   <div id="menuPanel" style="display:none;">
-    <h3>ویرایش منو</h3>
+    <h3>مدیریت منو</h3>
     <div id="menuList"></div>
     <button id="logoutBtn">خروج</button>
   </div>
