@@ -1,6 +1,6 @@
-
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+// firebase-config.js
+// این فایل را در ریشهٔ مخزن قرار بده
+export const firebaseConfig = {
   apiKey: "AIzaSyDbDtXhQBxUphCytdWx8cRETYjd4a3bcR4",
   authDomain: "cafe-iiz.firebaseapp.com",
   projectId: "cafe-iiz",
