@@ -1,121 +1,138 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>پنل مدیریت</title>
-
-  <style>
-    body { 
-      background: #111; 
-      color: #fff; 
-      font-family: sans-serif; 
-      padding: 20px; 
-    }
-    .box {
-      background: #222;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-    input {
-      width: 90%;
-      padding: 8px;
-      margin: 8px 0;
-      border-radius: 6px;
-      border: none;
-    }
-    button {
-      padding: 10px 15px;
-      background: #ff9900;
-      color: #000;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 5px;
-    }
-    .item {
-      background: #333;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 8px;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>پنل مدیریت — Coffee IIIZ</title>
+  <link rel="stylesheet" href="admin-style.css">
 </head>
 <body>
+  <div class="container">
+    <div class="header">
+      <div class="brand">
+        <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" alt="logo">
+        <div>
+          <h2>Coffee IIIZ — پنل مدیریت</h2>
+          <div class="muted">ایمیل مدیر: <b>www.izzcafe@gmail.com</b></div>
+        </div>
+      </div>
 
-  <h2>پنل مدیریت منو</h2>
+      <div class="controls">
+        <button id="logoutBtn" class="btn-small btn-ghost">خروج</button>
+      </div>
+    </div>
 
-  <!-- افزودن آیتم -->
-  <div class="box">
-    <h3>افزودن آیتم جدید</h3>
-    <input id="newName" placeholder="نام آیتم">
-    <input id="newPrice" placeholder="قیمت">
-    <button onclick="addItem()">افزودن</button>
+    <div class="panel">
+      <h3>افزودن آیتم جدید</h3>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+        <input id="newName" placeholder="نام آیتم" />
+        <input id="newPrice" placeholder="قیمت (تومان)" type="number" />
+        <input id="newImage" placeholder="آدرس عکس (اختیاری)" />
+        <button id="addBtn" class="btn-small">افزودن</button>
+      </div>
+
+      <div style="margin-top:18px;">
+        <h3>لیست آیتم‌ها</h3>
+        <div id="menuGrid" class="grid"></div>
+      </div>
+
+      <p class="footer-note">توجه: فقط کاربر با ایمیل مدیر مجاز به ویرایش است.</p>
+    </div>
   </div>
 
-  <!-- لیست آیتم‌ها -->
-  <h3>آیتم‌های منو</h3>
-  <div id="menuList"></div>
-
-  <!-- Firebase -->
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { 
-      getFirestore, collection, addDoc, getDocs, deleteDoc, updateDoc, doc 
-    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-    // ⛔ Firebase Config خودت را اینجا بگذار
-    const firebaseConfig = {
-      apiKey: "AIzaSyDbDtXhQBxUphCytdWx8cRETYjd4a3bcR4",
-      authDomain: "cafe-iiz.firebaseapp.com",
-      projectId: "cafe-iiz",
-    };
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+    import {
+      getFirestore, collection, addDoc, getDocs, deleteDoc, updateDoc, doc, onSnapshot, query, orderBy
+    } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
+    import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
+    import { firebaseConfig } from "./firebase-config.js";
 
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+    const auth = getAuth(app);
 
-    const menuRef = collection(db, "menu");
+    // elements
+    const newName = document.getElementById('newName');
+    const newPrice = document.getElementById('newPrice');
+    const newImage = document.getElementById('newImage');
+    const addBtn = document.getElementById('addBtn');
+    const menuGrid = document.getElementById('menuGrid');
+    const logoutBtn = document.getElementById('logoutBtn');
 
-    async function loadMenu() {
-      const list = document.getElementById("menuList");
-      list.innerHTML = "";
-      const data = await getDocs(menuRef);
-      data.forEach(item => {
-        const row = document.createElement("div");
-        row.className = "item";
-        row.innerHTML = `
-          <p><b>${item.data().name}</b> — ${item.data().price} تومان</p>
-          <input id="p${item.id}" placeholder="قیمت جدید">
-          <button onclick="updatePrice('${item.id}')">ویرایش</button>
-          <button onclick="removeItem('${item.id}')">حذف</button>
-        `;
-        list.appendChild(row);
+    // protect: check current user (assumes login already done via admin-login.html)
+    auth.onAuthStateChanged(user => {
+      if (!user) {
+        // redirect to login if not authed
+        window.location.href = 'admin-login.html';
+      } else {
+        // optional check: if not admin email, sign out
+        if (user.email.toLowerCase() !== 'www.izzcafe@gmail.com') {
+          alert('دسترسی غیرمجاز.');
+          signOut(auth);
+        } else {
+          // load menu live
+          loadLiveMenu();
+        }
+      }
+    });
+
+    // add
+    addBtn.addEventListener('click', async () => {
+      const name = newName.value.trim();
+      const price = Number(newPrice.value);
+      const image = newImage.value.trim() || null;
+      if (!name || !price) { alert('نام و قیمت را وارد کنید'); return; }
+      await addDoc(collection(db, 'menu'), { name, price, image, createdAt: Date.now() });
+      newName.value = ''; newPrice.value=''; newImage.value='';
+    });
+
+    // live listener
+    function loadLiveMenu() {
+      const q = query(collection(db, 'menu'), orderBy('createdAt', 'desc'));
+      onSnapshot(q, (snapshot) => {
+        menuGrid.innerHTML = '';
+        snapshot.forEach(docSnap => {
+          const id = docSnap.id;
+          const data = docSnap.data();
+          const item = document.createElement('div');
+          item.className = 'card-item';
+          item.innerHTML = `
+            <div class="title">${data.name}</div>
+            <div class="price">${data.price} تومان</div>
+            <div style="display:flex;gap:8px;align-items:center;margin-top:8px;">
+              <input id="p-${id}" type="number" placeholder="قیمت جدید" />
+              <button class="btn-small btn-edit" data-id="${id}">ذخیره</button>
+              <button class="btn-small btn-del" data-id="${id}">حذف</button>
+            </div>
+            ${data.image ? `<img src="${data.image}" alt="${data.name}" style="width:100%;border-radius:8px;margin-top:8px;">` : ''}
+          `;
+          menuGrid.appendChild(item);
+        });
+
+        // attach events (delegate)
+        menuGrid.querySelectorAll('.btn-edit').forEach(btn => {
+          btn.onclick = async (e) => {
+            const id = e.currentTarget.dataset.id;
+            const val = Number(document.getElementById('p-'+id).value);
+            if (!val) { alert('قیمت جدید را وارد کنید'); return; }
+            await updateDoc(doc(db, 'menu', id), { price: val });
+          };
+        });
+        menuGrid.querySelectorAll('.btn-del').forEach(btn => {
+          btn.onclick = async (e) => {
+            const id = e.currentTarget.dataset.id;
+            if (!confirm('مطمئنی حذف شود؟')) return;
+            await deleteDoc(doc(db, 'menu', id));
+          };
+        });
       });
     }
 
-    window.addItem = async function () {
-      const name = newName.value;
-      const price = newPrice.value;
-      await addDoc(menuRef, { name, price });
-      loadMenu();
+    logoutBtn.onclick = async () => {
+      await signOut(auth);
+      window.location.href = 'admin-login.html';
     };
-
-    window.updatePrice = async function (id) {
-      const newPrice = document.getElementById("p" + id).value;
-      const ref = doc(db, "menu", id);
-      await updateDoc(ref, { price: newPrice });
-      loadMenu();
-    };
-
-    window.removeItem = async function (id) {
-      const ref = doc(db, "menu", id);
-      await deleteDoc(ref);
-      loadMenu();
-    };
-
-    loadMenu();
   </script>
-
 </body>
 </html>
