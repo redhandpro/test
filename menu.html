@@ -1,37 +1,49 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>منوی Coffee IIIZ</title>
-  <link rel="stylesheet" href="style.css" />
-  <script type="module" src="firebase-config.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: "Vazirmatn", sans-serif; background:#fff; color:#111; padding:20px; }
+    .menu-wrap { max-width:900px; margin:0 auto; }
+    .menu-item { display:flex; justify-content:space-between; padding:12px 14px; border-bottom:1px solid #eee; }
+    .menu-item .name { font-weight:700; }
+    .menu-item .price { color:#ff7a00; font-weight:800; }
+  </style>
+</head>
+<body>
+  <div class="menu-wrap">
+    <h1>منوی کافه IIIZ</h1>
+    <div id="menuList">در حال بارگذاری...</div>
+  </div>
+
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
-    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
+    import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
     import { firebaseConfig } from "./firebase-config.js";
 
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
     async function loadMenu() {
-      const menuDiv = document.getElementById("menu");
-      const snapshot = await getDocs(collection(db, "menu"));
-      menuDiv.innerHTML = "";
-      snapshot.forEach((doc) => {
-        const item = doc.data();
-        menuDiv.innerHTML += `
-          <div class="menu-item">
-            <span>${item.name}</span>
-            <strong>${item.price} تومان</strong>
-          </div>`;
+      const target = document.getElementById('menuList');
+      target.innerHTML = 'در حال بارگذاری...';
+      const q = query(collection(db, 'menu'), orderBy('createdAt', 'desc'));
+      const snapshot = await getDocs(q);
+      if (snapshot.empty) { target.innerHTML = '<p>منو خالی است.</p>'; return; }
+      target.innerHTML = '';
+      snapshot.forEach(docSnap => {
+        const data = docSnap.data();
+        const div = document.createElement('div');
+        div.className = 'menu-item';
+        div.innerHTML = `<div class="name">${data.name}</div><div class="price">${data.price.toLocaleString()} تومان</div>`;
+        target.appendChild(div);
       });
     }
 
     loadMenu();
   </script>
-</head>
-<body dir="rtl">
-  <h1>منوی کافه IIIZ</h1>
-  <div id="menu"></div>
 </body>
 </html>
