@@ -1,81 +1,60 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ورود مدیر</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background: #111;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .login-box {
-      background: #222;
-      padding: 25px;
-      border-radius: 12px;
-      width: 300px;
-      text-align: center;
-    }
-    input {
-      width: 90%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: none;
-    }
-    button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border: none;
-      background: #ff9900;
-      color: #000;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ورود مدیر — Coffee IIIZ</title>
+  <link rel="stylesheet" href="admin-style.css">
 </head>
 <body>
-  <div class="login-box">
-    <h2>ورود مدیر</h2>
-    <input id="email" type="email" placeholder="ایمیل مدیر">
-    <input id="password" type="password" placeholder="رمز عبور">
-    <button onclick="login()">ورود</button>
-    <p id="msg"></p>
-  </div>
+  <main class="login-root">
+    <div class="card">
+      <h1>ورود مدیر</h1>
+      <p class="muted">فقط مدیر مجاز است — ایمیل: <b>www.izzcafe@gmail.com</b></p>
 
-  <!-- Firebase -->
+      <label>ایمیل</label>
+      <input id="email" type="email" placeholder="ایمیل مدیر" value="www.izzcafe@gmail.com" />
+
+      <label>رمز عبور</label>
+      <input id="password" type="password" placeholder="رمز عبور" />
+
+      <button id="loginBtn">ورود</button>
+      <p id="msg" class="msg"></p>
+    </div>
+  </main>
+
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-    // ⛔ اینجا Firebase Config خودت را قرار بده
-    const firebaseConfig = {
-      apiKey: "AIzaSyDbDtXhQBxUphCytdWx8cRETYjd4a3bcR4",
-      authDomain: "cafe-iiz.firebaseapp.com",
-      projectId: "cafe-iiz",
-    };
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
+    import { firebaseConfig } from "./firebase-config.js";
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    window.login = function () {
-      const email = document.getElementById("email").value;
-      const pass = document.getElementById("password").value;
+    const emailEl = document.getElementById('email');
+    const passEl = document.getElementById('password');
+    const msgEl = document.getElementById('msg');
+    const loginBtn = document.getElementById('loginBtn');
 
-      signInWithEmailAndPassword(auth, email, pass)
-        .then(() => {
-          window.location.href = "admin-panel.html";
-        })
-        .catch(err => {
-          document.getElementById("msg").innerText = "خطا: " + err.message;
-        });
-    };
+    loginBtn.addEventListener('click', async () => {
+      msgEl.textContent = '';
+      try {
+        const email = emailEl.value.trim();
+        const pass = passEl.value;
+        if (!email || !pass) { msgEl.textContent = 'ایمیل و رمز را وارد کنید.'; return; }
+
+        const userCred = await signInWithEmailAndPassword(auth, email, pass);
+        // فقط اجازه برای ایمیل مدیر داده شده است — در صورت نیاز بازبینی کنید
+        if (userCred.user && userCred.user.email.toLowerCase() === 'www.izzcafe@gmail.com') {
+          window.location.href = 'admin-panel.html';
+        } else {
+          msgEl.textContent = 'دسترسی غیرمجاز';
+          await auth.signOut();
+        }
+      } catch (e) {
+        msgEl.textContent = 'خطا در ورود: ' + (e.message || e.code);
+      }
+    });
   </script>
 </body>
 </html>
