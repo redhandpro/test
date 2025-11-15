@@ -1,76 +1,84 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coffee IIIZ</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <center>
-              <!-- Four Buttons under HELLO IIIZ -->
-<div class="menu-buttons">
-  <a href="cake.html" class="cake-btn">Button 1</a>
-  <a href="admin.html" class="menu-btn">Button 2</a>
-  <a href="menu.html" class="menu-btn">Button 3</a>
-  <a href="menu.html" class="menu-btn">Button 4</a>
-
-</div>
-  </center>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>منوی کافه</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #f7f5f2;
+      color: #333;
+      line-height: 1.7;
+    }
+    header {
+      background: #2f2f2f;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.6rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+    .category {
+      margin-bottom: 40px;
+    }
+    .category h2 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+    .item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .item-name {
+      font-weight: bold;
+    }
+    .price {
+      color: #444;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
+  <header>منوی دیجیتال کافه</header>
 
-  <!-- Cosmic Background -->
-  <div class="cosmos-background">
-    <div class="stars-container"></div>
-  </div>
+  <div class="container">
 
-  <!-- Centered Button -->
-  <div class="wrapper">
-    <button type="button" class="btn">
-      <strong>HELLO IIIZ</strong>
-      <div id="container-stars">
-        <div id="stars"></div>
-      </div>
-      <div id="glow">
-        <div class="circle"></div>
-        <div class="circle"></div>
-      </div>
-
-
-    </button>
-
-
-  </div>
-</body>
-
-
-
-  <!-- Carousel Section -->
-  <main class="flex-grow-1 d-flex align-items-center justify-content-center position-relative">
-    <div class="carousel-container">
-      <div class="carousel" id="memory-carousel">
-  
+    <div class="category">
+      <h2>نوشیدنی‌های گرم</h2>
+      <div class="item"><span class="item-name">قهوه دمی</span><span class="price">75,000</span></div>
+      <div class="item"><span class="item-name">کاپوچینو</span><span class="price">85,000</span></div>
+      <div class="item"><span class="item-name">لاته</span><span class="price">80,000</span></div>
     </div>
 
-    <!-- Carousel Controls -->
-    <div class="carousel-controls">
-      <button id="prev-btn" class="control-btn">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-      <button id="next-btn" class="control-btn">
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
+    <div class="category">
+      <h2>نوشیدنی‌های سرد</h2>
+      <div class="item"><span class="item-name">آیس لاته</span><span class="price">90,000</span></div>
+      <div class="item"><span class="item-name">فرپه کارامل</span><span class="price">110,000</span></div>
     </div>
-  </main>
 
-  <!-- Footer -->
-  <footer class="py-3 text-center">
+    <div class="category">
+      <h2>دسر و میان‌وعده</h2>
+      <div class="item"><span class="item-name">چیزکیک</span><span class="price">95,000</span></div>
+      <div class="item"><span class="item-name">براونی</span><span class="price">70,000</span></div>
+    </div>
 
-    <center><p class="instructions">بهترین در بهبهان</p></center>
-  
-  </footer>
+  </div>
 
-  <script src="script.js"></script>
+  <footer>© 2025 کافه شما — نسخه دیجیتالی</footer>
 </body>
 </html>
