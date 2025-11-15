@@ -55,30 +55,58 @@
 </head>
 <body>
   <header>منوی دیجیتال کافه</header>
-
-  <div class="container">
-
-    <div class="category">
-      <h2>نوشیدنی‌های گرم</h2>
-      <div class="item"><span class="item-name">قهوه دمی</span><span class="price">75,000</span></div>
-      <div class="item"><span class="item-name">کاپوچینو</span><span class="price">85,000</span></div>
-      <div class="item"><span class="item-name">لاته</span><span class="price">80,000</span></div>
-    </div>
-
-    <div class="category">
-      <h2>نوشیدنی‌های سرد</h2>
-      <div class="item"><span class="item-name">آیس لاته</span><span class="price">90,000</span></div>
-      <div class="item"><span class="item-name">فرپه کارامل</span><span class="price">110,000</span></div>
-    </div>
-
-    <div class="category">
-      <h2>دسر و میان‌وعده</h2>
-      <div class="item"><span class="item-name">چیزکیک</span><span class="price">95,000</span></div>
-      <div class="item"><span class="item-name">براونی</span><span class="price">70,000</span></div>
-    </div>
-
-  </div>
-
+  <div class="container" id="menuContainer"></div>
   <footer>© 2025 کافه شما — نسخه دیجیتالی</footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <script>
+    const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSM13BIgGLWazo9tNI6m_RhGWjUQ0vl0hWlqN9xkIslh6foRV3vj7OZNV73Zl9DrJo_QjEW7YbjR-9m/pub?output=csv';
+
+    function groupByCategory(data) {
+      return data.reduce((acc, row) => {
+        const category = row['Category'];
+        if (!acc[category]) acc[category] = [];
+        acc[category].push({ name: row['Item'], price: row['Price'] });
+        return acc;
+      }, {});
+    }
+
+    Papa.parse(sheetURL, {
+      download: true,
+      header: true,
+      complete: function(results) {
+        const grouped = groupByCategory(results.data);
+        const container = document.getElementById('menuContainer');
+
+        for (const category in grouped) {
+          const categoryDiv = document.createElement('div');
+          categoryDiv.className = 'category';
+
+          const h2 = document.createElement('h2');
+          h2.textContent = category;
+          categoryDiv.appendChild(h2);
+
+          grouped[category].forEach(item => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'item';
+
+            const nameSpan = document.createElement('span');
+            nameSpan.className = 'item-name';
+            nameSpan.textContent = item.name;
+
+            const priceSpan = document.createElement('span');
+            priceSpan.className = 'price';
+            priceSpan.textContent = item.price;
+
+            itemDiv.appendChild(nameSpan);
+            itemDiv.appendChild(priceSpan);
+            categoryDiv.appendChild(itemDiv);
+          });
+
+          container.appendChild(categoryDiv);
+        }
+      }
+    });
+  </script>
 </body>
 </html>
